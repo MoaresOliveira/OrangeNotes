@@ -1,0 +1,127 @@
+header {
+  height: 80px;
+  overflow: hidden;
+  position: relative;
+  .container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo {
+      #logo {
+        width: 190px;
+        content:url("../../../../assets/images/logo.svg");
+      }
+    }
+
+    nav {
+      ul {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 1rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+          a {
+            cursor: pointer;
+            color: #fff9;
+            transition: all .3s;
+            &:hover {
+              color: #fff;
+            }
+            .icon {
+              display: none;
+              width: 32px;
+              filter: invert(1);
+            }
+
+          }
+        }
+      }
+    }
+  }
+  .background {
+    pointer-events: none;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    background-color: #3f1301;
+    overflow-y: hidden;
+    .circle {
+      filter: blur(45px);
+      width: 80px;
+      height: random(100) + px;
+      border-radius: 100%;
+      background-color: var(--yellow);
+      &:nth-of-type(2n+1){
+        background-color: var(--red);
+      }
+      &:nth-of-type(3n+1){
+        background-color: var(--orange);
+      }
+      &:nth-of-type(5n+1){
+        background-color: var(--yellow);
+      }
+      &:nth-of-type(7n+1){
+        background-color: var(--light-orange);
+      }
+
+      &:nth-of-type(2n){
+        transform: translateY(random(50)+px);
+        transform: translateX(random(50)+px);
+      }
+      &:nth-of-type(3n){
+        transform: translateY(random(50)+px);
+        transform: translateX(random(50)+px);
+      }
+      &:nth-of-type(5n){
+        transform: translateY(random(50)+px);
+        transform: translateX(random(50)+px);
+      }
+      &:nth-of-type(7n){
+        transform: translateY(random(50)+px);
+        transform: translateX(random(50)+px);
+      }
+    }
+
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    position: fixed;
+    bottom: 0;
+    .container {
+      position: fixed;
+      .logo{
+        #logo {
+          width: 40px;
+          content:url("../../../../assets/images/orange.svg");
+        }
+      }
+
+      nav {
+        width: 80%;
+        ul {
+          gap: 2rem;
+          li {
+            a {
+              span {
+                display: none;
+              }
+              .icon {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
