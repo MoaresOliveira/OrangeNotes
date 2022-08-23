@@ -2,11 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
+  --white: #fff;
   --black: #0D0D0D;
   --red: #FE2F04;
   --yellow: #FCB42A;
   --orange: #DF600D;
   --light-orange: #FD8200;
+  font-size: 64.5%;
 }
 
 * {
@@ -14,9 +16,18 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: var(--orange) var(--black);
 }
 
-body {
-  background-color: var(--black);
-  height: 100vh;
+::-webkit-scrollbar {
+  width: 0.75rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--orange);
 }
