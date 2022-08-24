@@ -1,0 +1,45 @@
+$black: #000;
+#button {
+  height: 16rem;
+  width: clamp(28rem,15vw,31.8rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color:$black;
+  background-image:
+  radial-gradient(at 18% 86%, hsl(10, 99%, 30%) 0px, transparent 50%),
+  radial-gradient(at 79% 58%, hsl(22, 87%, 26%) 0px, transparent 50%),
+  radial-gradient(at 62% 39%, hsl(39, 97%, 36%) 0px, transparent 50%),
+  radial-gradient(at 89% 24%, hsl(10, 99%, 30%) 0px, transparent 50%),
+  radial-gradient(at 87% 83%, hsl(38, 97%, 36%) 0px, transparent 50%),
+  radial-gradient(at 80% 100%, hsl(23, 88%, 26%) 0px, transparent 50%),
+  radial-gradient(at 9% 9%, hsl(39, 97%, 37%) 0px, transparent 50%);
+  cursor: pointer;
+  &:hover, &:active {
+  }
+  .box {
+    background-color: #0D0D0D;
+    width: clamp(27.9rem,15vw,31.7rem);
+    height: 100%;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .text {
+      font-size: 2.4rem;
+      background: linear-gradient(270deg, var(--red) 4.72%, var(--orange) 50.37%, var(--light-orange) 100%);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding-right: 1.5rem;
+      position: relative;
+
+    }
+
+    .icon {
+      width: 2.9rem;
+    }
+  }
+}

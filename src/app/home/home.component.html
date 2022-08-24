@@ -1,5 +1,6 @@
 <div class="home">
   <div class="container-fluid d-flex">
+    <app-add-button></app-add-button>
     <app-card *ngFor="let card of cards" [title]="card.title" [percent]="card.percent"></app-card>
   </div>
 </div>
