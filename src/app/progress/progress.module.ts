@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
+import { ProgressComponent } from './progress.component';
+import { ProgressRoutingModule } from './progress.routing.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ProgressComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    ProgressRoutingModule
   ]
 })
 export class ProgressModule { }
