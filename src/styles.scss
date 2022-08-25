@@ -20,6 +20,11 @@
   scrollbar-color: var(--orange) var(--black);
 }
 
+body {
+  height: 100vh;
+  background-color: var(--black) !important;
+}
+
 ::-webkit-scrollbar {
   width: 0.75rem;
 }

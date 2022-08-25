@@ -17,6 +17,23 @@ $black: #000;
   radial-gradient(at 87% 83%, hsl(38, 97%, 36%) 0px, transparent 50%),
   radial-gradient(at 80% 100%, hsl(23, 88%, 26%) 0px, transparent 50%),
   radial-gradient(at 9% 9%, hsl(39, 97%, 37%) 0px, transparent 50%);
+  &.small {
+    width: 90%;
+    height: 2.7rem;
+    padding: 0.2rem;
+    .box {
+      width: 100%;
+      .text {
+        font-size: 1.6rem;
+        margin: 0;
+      }
+
+      .icon {
+        width: 1.6rem;
+        height: 1.6rem;
+      }
+    }
+  }
   cursor: pointer;
   .box {
     background-color: #0D0D0D;
@@ -35,7 +52,6 @@ $black: #000;
       position: relative;
 
     }
-
     .icon {
       width: 2.9rem;
     }

@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AddButtonComponent } from './components/add-button/add-button.component';
 import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    AddButtonComponent
   ],
   imports: [
     RouterModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    AddButtonComponent
   ],
 })
 export class SharedModule {}
