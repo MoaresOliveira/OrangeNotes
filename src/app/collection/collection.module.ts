@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CollectionComponent } from './collection.component';
 import { CollectionRoutingModule } from './collection.routing.module';
+import { CollectionComponentsModule } from './components/collection-components.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { CollectionRoutingModule } from './collection.routing.module';
   ],
   imports: [
     CommonModule,
-    CollectionRoutingModule
+    CollectionRoutingModule,
+    CollectionComponentsModule
   ]
 })
 export class CollectionModule { }

@@ -1,0 +1,12 @@
+<div class="side-list">
+  <app-add-button [small]="true"></app-add-button>
+  <div class="list">
+    <div *ngFor="let collection of collections" #item>
+      <h3 class="collection"  (click)="open(item)" [title]="collection.description"><img class="chevron" src="assets/images/chevron.svg" alt=""><span class="title">{{collection.name}}</span></h3>
+      <ul class="topic-list" hidden>
+        <li class="topic" *ngFor="let content of collection.content" ><span class="title">{{ content.name }}</span></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
