@@ -1,0 +1,44 @@
+<ng-container *ngIf="!isMedia">
+  <div [class]="class" #item>
+    <a [href]="collection.url" [title]="collection.description" *ngIf="collection.url" class="link" target="_blank"></a>
+    <div class="content-header" *ngIf="!superCollection" (click)="open(item)">
+      <span class="title" [title]="collection.description">{{collection.name}}</span>
+      <img class="chevron" src="assets/images/chevron.svg" >
+    </div>
+    <ul *ngIf="collection.content" class="list" [hidden]="!superCollection">
+      <li class="list-item" *ngFor="let subcontent of collection.content" >
+        <app-content [collection]="subcontent"></app-content>
+      </li>
+    </ul>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="collection.type == 'Image'">
+  <div [class]="class" #item>
+    <div class="content-header" *ngIf="!superCollection" (click)="open(item)">
+      <span class="title">{{collection.name}}</span>
+    </div>
+    <img [src]="collection.url" class="image" [title]="collection.description" [alt]="collection.description">
+    <p class="image-description">{{collection.description}}</p>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="collection.type == 'Video'">
+  <div [class]="class" #item>
+    <div class="content-header" *ngIf="!superCollection" (click)="open(item)">
+      <span class="title">{{collection.name}}</span>
+    </div>
+    <iframe [src]="collection.url" class="video-player" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <p class="video-description">{{collection.description}}</p>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="collection.type == 'Audio'">
+  <div [class]="class" #item>
+    <div class="content-header" *ngIf="!superCollection" (click)="open(item)">
+      <span class="title">{{collection.name}}</span>
+    </div>
+    <iframe style="border-radius:12px" class="audio-player" [src]="collection.url" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <p class="audio-description">{{collection.description}}</p>
+  </div>
+</ng-container>

@@ -1,0 +1,34 @@
+.board {
+  width: 100%;
+  height: calc(100vh - 80px - 6rem);
+  border: .1rem solid var(--orange);
+  border-radius: .5rem;
+  padding: 3rem 5rem;
+
+  .collection {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .title {
+      font-size: 3.2rem;
+      color: var(--white);
+      text-align: center;
+    }
+    .collection-content {
+      margin-top: 5rem;
+      margin-bottom: 3rem;
+      padding: .5rem;
+      overflow: auto;
+      height: 100%;
+      width: 100%;
+
+    }
+
+
+
+    }
+  }
+

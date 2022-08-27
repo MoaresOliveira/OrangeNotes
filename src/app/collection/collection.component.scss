@@ -1,0 +1,12 @@
+.collection {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  padding: 3rem;
+  padding-left: 0;
+  overflow: auto;
+  app-board {
+    width: 100%;
+  }
+}

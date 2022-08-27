@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
+  --gray: #635A5A;
   --white: #fff;
   --black: #0D0D0D;
   --red: #FE2F04;
@@ -27,7 +28,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 0.75rem;
+  width: 0.5rem;
 }
 
 ::-webkit-scrollbar-track {
