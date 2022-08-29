@@ -73,3 +73,45 @@
     }
   }
 }
+
+.showButton {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .side-list {
+    // display: none;
+    // transform: translateX(-100%);
+    transition: all .3s;
+    position: relative;
+    width: 100%;
+    // &::before {
+    //   content: '';
+    //   position: absolute;
+    //   width: 3rem;
+    //   height: calc(100% - 2rem);
+    //   // background-color: var(--orange);
+    //   right: -3rem;
+    //   top: 1rem;
+    //   border-radius: 0 .5rem .5rem 0;
+    // }
+
+    // &::after {
+    //   content: '';
+    //   position: absolute;
+    //   width: 0;
+    //   height: 0;
+    //   right: -2.5rem;
+    //   top: 50%;
+    //   border-bottom: 1.5rem solid transparent;
+    //   border-top: 1.5rem solid transparent;
+    //   border-left: 2rem solid var(--orange);
+    //   border-radius: .5rem;
+    //   animation: blink 1s infinite;
+    // }
+    // &:hover {
+    //   transform: translateX(0);
+    // }
+  }
+
+}

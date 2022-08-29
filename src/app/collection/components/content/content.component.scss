@@ -68,6 +68,7 @@
   }
   &.Audio {
     border: .1rem solid var(--gray);
+    border-radius: .5rem;
     padding: 1rem;
     display: flex;
     align-items: center;
@@ -90,13 +91,13 @@
       }
     }
 
-    .player {
+    .audio-player {
       margin-top: 1rem;
       width: 100%;
       aspect-ratio: 16/9;
     }
 
-    .video-description {
+    .audio-description {
       margin-top: 1rem;
       font-size: 1.6rem;
       color: var(--white);

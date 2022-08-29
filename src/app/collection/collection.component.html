@@ -1,4 +1,10 @@
-<div class="collection">
+<div [class]="class">
   <app-side-list></app-side-list>
-  <app-board></app-board>
+  <app-board>
+  </app-board>
+  <button id="list-button" (click)="toggleList()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </div>

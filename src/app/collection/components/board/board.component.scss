@@ -1,10 +1,15 @@
 .board {
   width: 100%;
   height: calc(100vh - 80px - 6rem);
-  border: .1rem solid var(--orange);
+  position: relative;
   border-radius: .5rem;
   padding: 3rem 5rem;
-
+  overflow: auto;
+  .title {
+    font-size: 3.2rem;
+    color: var(--white);
+    text-align: center;
+  }
   .collection {
     height: 100%;
     overflow: hidden;
@@ -12,11 +17,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    .title {
-      font-size: 3.2rem;
-      color: var(--white);
-      text-align: center;
-    }
+
     .collection-content {
       margin-top: 5rem;
       margin-bottom: 3rem;
@@ -27,8 +28,17 @@
 
     }
 
+  }
+}
 
-
+@media screen and (max-width: 1024px) {
+  .board {
+    padding: 0;
+    .collection {
+      .collection-content {
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+      }
     }
   }
-
+}
