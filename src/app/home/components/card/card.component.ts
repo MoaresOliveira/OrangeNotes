@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Collection } from '../../../interfaces/collection';
 
 @Component({
   selector: 'app-card',
@@ -7,8 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
-  @Input() title: string = 'Card Title';
-  @Input() percent: number = 0;
+  @Input() collection!: Collection;
   progress: string = '';
   percentAlign: string = ''
 
@@ -17,7 +17,7 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let percent = this.percent;
+    let percent = this.collection.percent!;
     this.progress = percent + '%';
     this.percentAlign = percent > 7? `right: 0.5rem` : `right: -1.5rem`;
   }

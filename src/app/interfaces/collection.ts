@@ -1,11 +1,13 @@
 export interface Collection {
   id: number;
   name: string;
-  description: string;
+  description?: string;
   url?: string;
-  type: CollectionType;
+  type?: CollectionType;
   content?: Collection[];
   collection?: Collection;
+  percent?: number;
+  isDone?: boolean;
 }
 
 export enum CollectionType {

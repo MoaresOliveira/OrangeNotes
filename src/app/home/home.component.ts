@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Collection } from '../interfaces/collection';
 
 @Component({
   selector: 'app-home',
@@ -7,61 +8,75 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  cards = [
+  collections: Collection[] = [
     {
-      title: 'Back-end',
+      id: 1,
+      name: 'Back-end',
       percent: 50
     },
     {
-      title: 'Front-end',
+      id: 2,
+      name: 'Front-end',
       percent: 75
     },
     {
-      title: 'UX Design',
+      id: 3,
+      name: 'UX Design',
       percent: 25
     },
     {
-      title: 'Data Science',
+      id: 4,
+      name: 'Data Science',
       percent: 7
     },
     {
-      title: 'Database',
+      id: 5,
+      name: 'Database',
       percent: 50
     },
     {
-      title: 'Cloud Computing',
+      id: 6,
+      name: 'Cloud Computing',
       percent: 75
     },
     {
-      title: 'DevOps',
+      id: 7,
+      name: 'DevOps',
       percent: 25
     },
     {
-      title: 'Design Thinking',
+      id: 8,
+      name: 'Design Thinking',
       percent: 7
     },
     {
-      title: 'Data Structure',
+      id: 9,
+      name: 'Data Structure',
       percent: 50
     },
     {
-      title: 'Agile',
+      id: 10,
+      name: 'Agile',
       percent: 75
     },
     {
-      title: 'Cyber Security',
+      id: 11,
+      name: 'Cyber Security',
       percent: 25
     },
     {
-      title: 'Accessibility',
+      id: 12,
+      name: 'Accessibility',
       percent: 7
     },
     {
-      title: 'Mobile Development',
+      id: 13,
+      name: 'Mobile Development',
       percent: 7
     },
     {
-      title: 'Blockchain',
+      id: 14,
+      name: 'Blockchain',
       percent: 7
     }
   ]
