@@ -1,7 +1,6 @@
 .Modal {
-  // background: #fff;
   border-radius: .5rem;
-  box-shadow: 0 .2rem .8rem #333;
+  box-shadow: 0 0 .8rem #333;
   min-width: 32rem;
   position: fixed;
   left: 50%;
@@ -11,7 +10,7 @@
 }
 
 .overlay {
-  background: #000;
+  background: var(--black);
   height: 100vh;
   left: 0;
   opacity: 0.5;

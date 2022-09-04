@@ -1,26 +1,25 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router, RoutesRecognized } from '@angular/router';
+import { filter, pairwise } from 'rxjs';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent  {
 
-  @Input() mostrar: boolean = false;
-  @Output() mostrarChange: EventEmitter<any> = new EventEmitter();
+  @Input() show: boolean = false;
+  @Output() showChange: EventEmitter<any> = new EventEmitter();
+  @Input() onClose!: () => void;
 
-  constructor(private route: Router) { }
-
-  ngOnInit(): void {
-  }
+  constructor(private router: Router) { }
 
   toggle () {
-    this.mostrar = !this.mostrar;
-    this.mostrarChange.emit(this.mostrar);
-    this.route.navigate(['/collection']);
+    this.show = !this.show;
+    this.showChange.emit(this.show);
+    this.onClose();
   }
 
 }
