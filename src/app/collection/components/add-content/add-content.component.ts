@@ -47,7 +47,6 @@ export class AddContentComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.addForm.value);
     let type = this.formTitle.split(' ')[1];
     type = type.toUpperCase();
     let collection = {
@@ -58,16 +57,12 @@ export class AddContentComponent implements OnInit {
     }
     if(this.collection == undefined){
       this.collectionService.createCollection((collection as Collection)).subscribe((data: any) => {
-        console.log(data)
         this.router.navigate([`/collection/${data.id}`]);
       })
     }else {
-      console.log('Vai adicionar em uma coleção existente', this.collection.id)
-      console.log('Conteúdo a ser adicionado', collection)
       this.collectionService.addContentToCollection(this.idCollection, collection as Collection)
         .subscribe((data: any) => {
-          console.log(data)
-          this.router.navigate([`/collection/${this.idCollection}`]);
+          this.router.navigate([`/collection/${sessionStorage.getItem('previousCollection')}`]);
         })
     }
   }
