@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { ProgressComponent } from './progress.component';
 import { ProgressRoutingModule } from './progress.routing.module';
+import { SharedModule } from '../shared/shared.module';
+import { ProgressComponentsModule } from './components/progress-components.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +12,9 @@ import { ProgressRoutingModule } from './progress.routing.module';
   ],
   imports: [
     CommonModule,
-    ProgressRoutingModule
+    SharedModule,
+    ProgressRoutingModule,
+    ProgressComponentsModule
   ]
 })
 export class ProgressModule { }
