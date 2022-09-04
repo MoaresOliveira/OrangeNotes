@@ -1,0 +1,70 @@
+$black: #000;
+.horizontal-bar-chart {
+  background-color: var(--black);
+  box-shadow: 0 0 .5rem var(--gray);
+  padding: 2rem;
+  display: flex;
+  border-radius: .5rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  .chart-title {
+    color: var(--white);
+    font-size: clamp(1.5rem, 2vw, 2.2rem);
+  }
+  .chart-item {
+    width: 100%;
+    height: 4rem;
+    margin: .5rem 0;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .rank{
+      width: 2rem;
+      height: 2rem;
+      margin-right: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1.5rem, 2vw, 2rem);
+      color: var(--white);
+    }
+    .collection-info {
+      width: 100%;
+      .title {
+        font-size: clamp(1.4rem, 2vw, 1.6rem);
+        color: var(--white);
+      }
+
+      .progress {
+        width: 100%;
+        height: 1.8rem;
+        background-color: var(--yellow);
+        padding: 0.1rem;
+        border-radius: 0.5rem;
+        .progress-bar {
+          position: relative;
+          height: 100%;
+          border-radius: 0.5rem;
+          background: linear-gradient(270deg, var(--red) 4.72%, var(--orange) 50.37%, var(--light-orange) 100%);
+          overflow: visible;
+          .percent {
+            font-size: 1rem;
+            color: var(--white);
+            position: absolute;
+            text-shadow: $black 0 0 0.1rem,$black 0 0 0.1rem,$black 0 0 0.1rem,$black 0 0 0.1rem,;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .horizontal-bar-chart {
+    padding: .5rem;
+  }
+
+}

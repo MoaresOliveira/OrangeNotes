@@ -1,0 +1,16 @@
+<div class="horizontal-bar-chart">
+  <h1 class="chart-title">Higher percentages completed</h1>
+  <div class="chart-item" *ngFor="let collection of collections">
+    <div class="rank">
+      <span>{{collections.indexOf(collection) + 1}}.</span>
+    </div>
+    <div class="collection-info">
+      <span class="title">{{ collection.name }}</span>
+      <div class="progress">
+        <div class="progress-bar" [style.width.%]="collection.percentage">
+          <span class="percent" [style]="collection.percentage! > 7? 'right: 0.5rem' : 'right: -1.5rem'">{{collection.percentage}}%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
