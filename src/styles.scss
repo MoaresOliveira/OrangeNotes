@@ -25,6 +25,12 @@
 body {
   height: 100vh;
   background-color: var(--black) !important;
+  overflow: hidden;
+}
+
+::selection {
+  background-color: var(--orange);
+  color: var(--black);
 }
 
 ::-webkit-scrollbar {
