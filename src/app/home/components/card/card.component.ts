@@ -9,7 +9,6 @@ import { Collection } from '../../../interfaces/collection';
 export class CardComponent implements OnInit {
 
   @Input() collection!: Collection;
-  progress: string = '';
   percentAlign: string = ''
 
   constructor() {
@@ -17,8 +16,7 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let percent = this.collection.percent!;
-    this.progress = percent + '%';
+    let percent = this.collection.percentage!;
     this.percentAlign = percent > 7? `right: 0.5rem` : `right: -1.5rem`;
   }
 
