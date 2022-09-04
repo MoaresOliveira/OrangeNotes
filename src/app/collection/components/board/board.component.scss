@@ -10,8 +10,37 @@
     color: var(--white);
     text-align: center;
   }
+
+  .option-button {
+    position: absolute;
+    right: 6.5rem;
+    width: 2rem;
+    height: fit-content;
+    top: 3rem;
+    padding: 1rem;
+    border: none;
+    background: none;
+    color: var(--gray);
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    &:hover {
+      color: var(--white);
+    }
+    span {
+      width: .5rem;
+      height: .5rem;
+      margin: .1rem;
+      border-radius: 100%;
+      background: var(--gray);
+    }
+  }
+
   .collection {
-    height: 100%;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -29,11 +58,32 @@
     }
 
   }
+
+  .empty-board {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 80%;
+    .description {
+      color: var(--white);
+      font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+    }
+
+    app-add-button {
+      width: 50%;
+    }
+
+  }
 }
 
 @media screen and (max-width: 1024px) {
   .board {
     padding: 0;
+    .option-button {
+      right: 1.5rem;
+      top: 0;
+    }
     .collection {
       .collection-content {
         margin-top: 3rem;

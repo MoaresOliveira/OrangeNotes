@@ -1,8 +1,23 @@
 <div class="board">
-  <h1 class="title">{{collection.name}}</h1>
-  <div *ngIf="!nothing" class="collection">
-    <div class="collection-content">
-      <app-content [collection]="collection"></app-content>
+  <ng-container *ngIf="!nothing; else emptyBoard">
+    <h1 class="title">{{collection.name}}</h1>
+    <button [routerLink]="'/collection/option-'+ collection.id" class="option-button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="collection">
+      <div class="collection-content">
+        <app-content [collection]="collection"></app-content>
+      </div>
     </div>
-  </div>
+  </ng-container>
 </div>
+
+<ng-template #emptyBoard>
+  <div class="empty-board">
+    <h1 class="title">Nothing to show</h1>
+    <p class="description">Add a collection to get started</p>
+    <app-add-button routerLink="/collection/add-collection" [small]="true"></app-add-button>
+  </div>
+</ng-template>
