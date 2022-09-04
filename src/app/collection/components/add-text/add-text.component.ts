@@ -37,14 +37,12 @@ export class AddTextComponent implements OnInit, AfterViewInit {
     }else if(event.key === 'Enter' && event.shiftKey) {
       this.rowCounter++;
     }
-    console.log(this.textarea.rows);
   }
 
   activate(item: HTMLDivElement){
     this.active = true;
     this.class = 'active-add-text';
     this.rowCounter = 1;
-    console.log(this.textarea);
     this.textarea?.focus();
   }
 
@@ -61,7 +59,9 @@ export class AddTextComponent implements OnInit, AfterViewInit {
     }
     this.collectionService.addContentToCollection(this.collection.id, (content as Collection))
       .subscribe((result) => {
-        this.router.navigate(['/collection/' + this.collection.id]);
+        this.router.navigate(['/collection']).then(() => {
+          this.router.navigate(['/collection/' + this.collection.id]);
+        });
       });
   }
 
