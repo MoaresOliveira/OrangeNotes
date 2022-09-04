@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Collection } from '../interfaces/collection';
 
-const baseUrl = 'http://localhost:8080/collections';
+const baseUrl = 'https://collection-orange-notes.herokuapp.com/collections';
 
 @Injectable({
   providedIn: 'root'
