@@ -25,7 +25,6 @@ export class ContentComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer, private collectionService: CollectionService) { }
 
   ngOnInit(): void {
-    console.log("content ", this.collection);
     this.checkIfSuperCollection();
     this.checkIfMedia();
     if(this.isMedia) this.embed();
@@ -34,7 +33,6 @@ export class ContentComponent implements OnInit {
   }
 
   onRightClick(event: MouseEvent){
-    console.log(event)
     this.contextMenu.x = event.clientX
     this.contextMenu.y = event.clientY
     this.contextMenu.active = true;
@@ -42,7 +40,6 @@ export class ContentComponent implements OnInit {
 
   getContent(){
     this.collectionService.getCollectionContent(this.collection.id!).subscribe((data: any) => {
-      console.log("getContent Content",data)
       this.collection.content = data;
     })
   }
