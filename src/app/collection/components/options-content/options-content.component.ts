@@ -38,7 +38,9 @@ export class OptionsContentComponent implements OnInit {
 
   markAsFinished(){
     this.collectionService.finishCollection(this.idCollection)
-      .subscribe(data => console.log(data))
+      .subscribe(data => {
+        this.router.navigate([`/collection/${sessionStorage.getItem('previousCollection')}`]);
+      })
   }
 
   editCollection(){
@@ -58,12 +60,13 @@ export class OptionsContentComponent implements OnInit {
     let confirmed = confirm("Are you sure you want to delete this collection?");
     if(confirmed){
       this.collectionService.deleteCollection(this.idCollection)
-        .subscribe(data => console.log(data))
+        .subscribe(data => {
+          this.router.navigate([`/collection/${sessionStorage.getItem('previousCollection')}`]);
+        })
     }
   }
 
   onSubmit(){
-    console.log(this.editForm.value);
     let type = this.formTitle.split(' ')[1];
     type = type.toUpperCase();
     let collection = {
@@ -72,7 +75,9 @@ export class OptionsContentComponent implements OnInit {
       url: this.editForm.value.url
     }
     this.collectionService.updateCollection(this.idCollection, collection as Collection)
-      .subscribe(data => console.log(data))
+      .subscribe(data => {
+        this.router.navigate([`/collection/${sessionStorage.getItem('previousCollection')}`]);
+      })
   }
 
 }
