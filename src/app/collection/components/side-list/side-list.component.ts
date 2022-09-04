@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Collection, CollectionType } from '../../../interfaces/collection';
+import { CollectionService } from '../../../services/collection.service';
 
 @Component({
   selector: 'app-side-list',
@@ -8,53 +9,23 @@ import { Collection, CollectionType } from '../../../interfaces/collection';
 })
 export class SideListComponent implements OnInit {
 
-  collections: Collection[] = [
-    {
-      id: 1,
-      name: 'Angular',
-      description: 'Angular is a platform that makes it easy to build applications with the web.',
-      type: CollectionType.COLLECTION,
-      content: [
-        {
-          id: 1,
-          name: 'Angular',
-          description: 'Angular is a platform that makes it easy to build applications with the web.',
-          type: CollectionType.COLLECTION,
-        },
-        {
-          id: 1,
-          name: 'Angular',
-          description: 'Angular is a platform that makes it easy to build applications with the web.',
-          type: CollectionType.COLLECTION,
-        }
-      ]
-    },
-    {
-      id: 2,
-      name: 'React',
-      description: 'A JavaScript library for building user interfaces',
-      type: CollectionType.COLLECTION,
-      content: [
-        {
-          id: 1,
-          name: 'Angular',
-          description: 'Angular is a platform that makes it easy to build applications with the web.',
-          type: CollectionType.COLLECTION,
-        },
-        {
-          id: 1,
-          name: 'Angular',
-          description: 'Angular is a platform that makes it easy to build applications with the web.',
-          type: CollectionType.COLLECTION,
-        }
-      ]
-    }
-  ];
+  collections: Collection[] = [];
 
-  constructor() { }
+  constructor(private collectionService: CollectionService) { }
 
   ngOnInit(): void {
+    this.collectionService.getCollections().subscribe((data: any) => {
+      this.collections = data;
+    }).add(() => {
+      this.collections.forEach((collection)=> {
+        this.collectionService.getCollectionContent(collection.id).subscribe((content) => {
+          content.forEach(el => el.parent = collection);
+          collection.content = content;
+        })
+      })
+    })
   }
+
   open(item: HTMLElement){
     let collection = item.querySelector('.collection');
     collection?.classList.toggle('active')
