@@ -1,0 +1,9 @@
+<div #component [class]="class">
+  <button *ngIf="!active" (click)="activate(component)" class="addText">
+    <span>Add Text</span>
+  </button>
+
+  <textarea appTextareaAutosize [minRows]="1" [maxRows]="10" maxlength="1000" *ngIf="active" autofocus
+    (keydown)="keydown($event)" (blur)="deactivate()" name="text" id="text" cols="30" rows="1">
+  </textarea>
+</div>
