@@ -1,44 +1,59 @@
 <ng-container *ngIf="!isMedia">
-  <div [class]="class" #item>
-    <a [href]="collection.url" [title]="collection.description" *ngIf="collection.url" class="link" target="_blank"></a>
-    <div class="content-header" *ngIf="!superCollection" (click)="open(item)">
-      <span class="title" [title]="collection.description">{{collection.name}}</span>
-      <img class="chevron" src="assets/images/chevron.svg" >
+  <div [class]="class" #item (contextmenu)="onRightClick($event)">
+    <div class="content-header" *ngIf="!superCollection" >
+      <a [href]="collection.url" [title]="collection.description" *ngIf="collection.url" class="link" [class]="collection.finished? 'finished': ''" target="_blank">{{collection.name}}</a>
+      <div (click)="open(item)">
+        <span class="title" [class]="collection.finished? 'finished': ''" [title]="collection.description">{{collection.name}}</span>
+        <img class="chevron" src="assets/images/chevron.svg" >
+      </div>
+      <ng-container *ngTemplateOutlet="optionButton"></ng-container>
     </div>
     <ul *ngIf="collection.content" class="list" [hidden]="!superCollection">
-      <li class="list-item" *ngFor="let subcontent of collection.content" >
-        <app-content [collection]="subcontent"></app-content>
-      </li>
+        <li class="list-item"  *ngFor="let subcontent of collection.content">
+          <app-content [collection]="subcontent"></app-content>
+        </li>
+        <app-add-text [collection]="collection" class="addText"></app-add-text>
     </ul>
   </div>
 </ng-container>
 
-<ng-container *ngIf="collection.type == 'Image'">
+<ng-container *ngIf="collection.type == 'IMAGE'">
   <div [class]="class" #item>
-    <div class="content-header" *ngIf="!superCollection" (click)="open(item)">
-      <span class="title">{{collection.name}}</span>
+    <div class="content-header">
+      <span class="title" [class]="collection.finished? 'finished': ''">{{collection.name}}</span>
+      <ng-container *ngTemplateOutlet="optionButton"></ng-container>
     </div>
     <img [src]="collection.url" class="image" [title]="collection.description" [alt]="collection.description">
     <p class="image-description">{{collection.description}}</p>
   </div>
 </ng-container>
 
-<ng-container *ngIf="collection.type == 'Video'">
+<ng-container *ngIf="collection.type == 'VIDEO'">
   <div [class]="class" #item>
-    <div class="content-header" *ngIf="!superCollection" (click)="open(item)">
-      <span class="title">{{collection.name}}</span>
+    <div class="content-header">
+      <span class="title" [class]="collection.finished? 'finished': ''">{{collection.name}}</span>
+      <ng-container *ngTemplateOutlet="optionButton"></ng-container>
     </div>
     <iframe [src]="collection.url" class="video-player" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <p class="video-description">{{collection.description}}</p>
   </div>
 </ng-container>
 
-<ng-container *ngIf="collection.type == 'Audio'">
+<ng-container *ngIf="collection.type == 'AUDIO'">
   <div [class]="class" #item>
-    <div class="content-header" *ngIf="!superCollection" (click)="open(item)">
-      <span class="title">{{collection.name}}</span>
+    <div class="content-header">
+      <span class="title" [class]="collection.finished? 'finished': ''">{{collection.name}}</span>
+      <ng-container *ngTemplateOutlet="optionButton"></ng-container>
     </div>
     <iframe style="border-radius:12px" class="audio-player" [src]="collection.url" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     <p class="audio-description">{{collection.description}}</p>
   </div>
 </ng-container>
+
+<ng-template #optionButton>
+  <button class="option-button" [routerLink]="'/collection/option-'+ collection.id" (click)="addAction()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</ng-template>

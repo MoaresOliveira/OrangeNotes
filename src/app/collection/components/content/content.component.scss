@@ -1,72 +1,156 @@
 
 .content {
   margin-bottom: 2rem;
+  position: relative;
 
-  &.Collection {
+  .content-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+  }
+  .finished {
+    &::after {
+      content: '✓';
+      margin-left: .5rem;
+      color: green;
+    }
+  }
+  .option-button {
+    position: absolute;
+    width: 2rem;
+    height: fit-content;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--gray);
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    &:hover {
+      color: var(--white);
+    }
+    span {
+      width: .5rem;
+      height: .5rem;
+      margin: .1rem;
+      border-radius: 100%;
+      background: var(--gray);
+    }
+  }
+
+  &.COLLECTION {
     .content-header {
-      display: flex;
-      align-items: center;
+      justify-content: flex-start;
       border-bottom: .1rem dashed var(--gray);
-      .title {
-        font-size: clamp(1.8rem, 2.5vw, 2.8rem);
-        user-select: none;
-        color: var(--white);
-        user-select: none;
+      position: relative;
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .title {
+          font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+          user-select: none;
+          color: var(--white);
+          user-select: none;
+        }
+        .chevron {
+          width: 2.4rem;
+          height: 2.4rem;
+          transform: rotate(-90deg);
+        }
       }
-      .chevron {
-        width: 2.4rem;
-        height: 2.4rem;
-        transform: rotate(-90deg);
-      }
+
     }
 
     .list {
+      list-style: none;
+      border-bottom: 1px solid var(--gray);
       .list-item {
         list-style: none;
       }
     }
   }
 
-  &.Link {
-    cursor: pointer;
+  &.LINK {
     border: .1rem solid var(--gray);
     padding: 1rem;
-    position: relative;
-    .link {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      box-shadow: 0 0 .5rem var(--gray);
+    margin: 1rem 0;
+    box-shadow: 0 0 .5rem var(--gray);
+    .content-header {
+      border: none;
+      .link {
+        height: 100%;
+        font-size: clamp(1.4rem, 2.5vw, 2.4rem);
+        color: var(--white);
+        text-decoration: none;
+      }
+      .title {
+        display: none;
+      }
+      .chevron {
+        display: none;
+      }
     }
 
   }
-  &.Video {
+  &.VIDEO {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .content-header {
+      justify-content: center;
+      border: none;
+      .title {
+        font-size: clamp(1.4rem, 2.5vw, 2.4rem);
+        color: var(--white);
+      }
+    }
 
-    .player {
-      margin-top: 1rem;
+    .video-player {
+      margin: 1rem 0;
       width: 100%;
       aspect-ratio: 16/9;
     }
 
     .video-description {
-      margin-top: 1rem;
-      font-size: 1.6rem;
-      color: var(--white);
-    }
-  }
-  &.Image {
-
-    .image {
-      width: 90%;
-    }
-    .image-description {
+      margin: 0;
       font-size: 1.6rem;
       color: var(--gray);
     }
   }
-  &.Audio {
+  &.IMAGE {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .content-header {
+      justify-content: center;
+      border: none;
+      .title {
+        font-size: clamp(1.4rem, 2.5vw, 2.4rem);
+        color: var(--white);
+      }
+    }
+    .image {
+      width: 90%;
+      margin: 1rem 0;
+    }
+    .image-description {
+      margin: 0;
+      font-size: 1.6rem;
+      color: var(--gray);
+    }
+  }
+  &.AUDIO {
     border: .1rem solid var(--gray);
     border-radius: .5rem;
     padding: 1rem;
@@ -76,8 +160,6 @@
     flex-direction: column;
     overflow: auto;
     .content-header {
-      display: flex;
-      align-items: center;
       justify-content: center;
       border: none;
       .title {
@@ -104,20 +186,32 @@
       color: var(--white);
     }
   }
-  &.Content {
-    padding: 1rem;
+  &.CONTENT {
+    padding: 1rem 0;
+    margin: 0;
     .content-header {
       display: flex;
       align-items: center;
       border-bottom: none;
-      .title {
-        font-size: 1.6rem;
-        color: var(--white);
-        user-select: text;
-      }
-      .chevron {
-        display: none;
+      div {
+        .title {
+          font-size: 1.6rem;
+          color: var(--white);
+          user-select: text;
+        }
+        .chevron {
+          display: none;
+        }
       }
     }
   }
+}
+
+.contextMenu {
+
+app-context-menu {
+  width: 100%;
+  height: 100%;
+  background-color: var(--white);
+}
 }

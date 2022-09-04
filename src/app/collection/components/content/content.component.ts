@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Collection, CollectionType } from '../../../interfaces/collection';
+import { CollectionService } from '../../../services/collection.service';
 
 @Component({
   selector: 'app-content',
@@ -10,33 +11,58 @@ import { Collection, CollectionType } from '../../../interfaces/collection';
 export class ContentComponent implements OnInit {
 
   @Input() collection!: Collection;
+  @Output() onAdd: EventEmitter<any> = new EventEmitter<any>();
+
   superCollection: boolean = false;
   class: string = 'content '
   isMedia: boolean = false;
-
-  constructor(private sanitizer: DomSanitizer) { }
-
-  ngOnInit(): void {
-    this.checkIfSuperCollection();
-    this.checkIfMedia();
-    this.embedVideo();
-    console.log(this.collection.url);
-    this.class += this.collection.type
+  contextMenu = {
+    active: false,
+    x: 0,
+    y: 0
   }
 
-  embedVideo(){
-    if(this.isMedia){
-      let url = this.collection.url;
-      if(this.collection.type == CollectionType.VIDEO){
-        if(url?.includes('youtube')){
-          this.collection.url = this.sanitizeUrl(url!.replace('watch?v=', 'embed/'));
-        }else if(url?.includes('youtu.be')){
-          this.collection.url = this.sanitizeUrl(url!.replace('youtu.be/', 'youtube.com/embed/'));
-        }
-      }else if(this.collection.type == CollectionType.AUDIO){
-        if(url?.includes('spotify')){
-          this.collection.url = this.sanitizeUrl(url!.replace('track', 'embed/track')+ '?utm_source=generator&theme=0') ;
-        }
+  constructor(private sanitizer: DomSanitizer, private collectionService: CollectionService) { }
+
+  ngOnInit(): void {
+    console.log("content ", this.collection);
+    this.checkIfSuperCollection();
+    this.checkIfMedia();
+    if(this.isMedia) this.embed();
+    this.class += this.collection.type;
+    this.getContent();
+  }
+
+  onRightClick(event: MouseEvent){
+    console.log(event)
+    this.contextMenu.x = event.clientX
+    this.contextMenu.y = event.clientY
+    this.contextMenu.active = true;
+  }
+
+  getContent(){
+    this.collectionService.getCollectionContent(this.collection.id!).subscribe((data: any) => {
+      console.log("getContent Content",data)
+      this.collection.content = data;
+    })
+  }
+
+  addAction(){
+    this.onAdd.emit();
+  }
+
+  embed(){
+    let url: any = this.collection.url!;
+    if(typeof url == 'object') return;
+    if(this.collection.type == CollectionType.VIDEO){
+      if(url.includes('youtube')){
+        this.collection.url = this.sanitizeUrl(url!.replace('watch?v=', 'embed/'));
+      }else if(url.includes('youtu.be')){
+        this.collection.url = this.sanitizeUrl(url!.replace('youtu.be/', 'youtube.com/embed/'));
+      }
+    }else if(this.collection.type == CollectionType.AUDIO){
+      if(url.includes('spotify')){
+        this.collection.url = this.sanitizeUrl(url!.replace('track', 'embed/track')+ '?utm_source=generator&theme=0') ;
       }
     }
   }
@@ -45,9 +71,7 @@ export class ContentComponent implements OnInit {
     let topicList = item.querySelector('.list');
     let chevron = (<HTMLImageElement>item.querySelector('.chevron'));
     item.classList.toggle('active')
-    if(topicList?.innerHTML.includes('li')){
-      topicList?.toggleAttribute('hidden');
-    }
+    topicList?.toggleAttribute('hidden');
     if(item.classList.contains('active')){
       chevron.style.transform = 'rotate(0deg)';
     } else {
@@ -60,13 +84,13 @@ export class ContentComponent implements OnInit {
   }
 
   private checkIfSuperCollection(){
-    this.collection.collection == null ? this.superCollection = true : this.superCollection = false;
+    this.collection.parent == null ? this.superCollection = true : this.superCollection = false;
   }
 
   private checkIfMedia(){
-    this.collection.type == 'Video' ||
-    this.collection.type == 'Image' ||
-    this.collection.type == 'Audio' ? this.isMedia = true : this.isMedia = false;
+    this.collection.type == 'VIDEO' ||
+    this.collection.type == 'IMAGE' ||
+    this.collection.type == 'AUDIO' ? this.isMedia = true : this.isMedia = false;
   }
 
 }
