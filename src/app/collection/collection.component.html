@@ -1,10 +1,15 @@
 <div [class]="class">
   <app-side-list></app-side-list>
-  <app-board>
-  </app-board>
+  <app-board [collection]="selectedCollection"></app-board>
+
   <button id="list-button" (click)="toggleList()">
     <span></span>
     <span></span>
     <span></span>
   </button>
+
+  <app-modal *ngIf="showModal" [(show)]="showModal" [onClose]="navigateToCollection">
+    <app-add-content *ngIf="addingContent" [idCollection]="idCollection"></app-add-content>
+    <app-options-content *ngIf="!addingContent" [idCollection]="idCollection"></app-options-content>
+  </app-modal>
 </div>
