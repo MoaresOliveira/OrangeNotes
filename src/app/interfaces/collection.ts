@@ -5,16 +5,16 @@ export interface Collection {
   url?: string;
   type?: CollectionType;
   content?: Collection[];
-  collection?: Collection;
-  percent?: number;
-  isDone?: boolean;
+  parent?: Collection;
+  percentage?: number;
+  finished?: boolean;
 }
 
 export enum CollectionType {
-  LINK = 'Link',
-  VIDEO = 'Video',
-  IMAGE = 'Image',
-  AUDIO = 'Audio',
-  COLLECTION = 'Collection',
-  CONTENT = 'Content',
+  LINK = 'LINK',
+  VIDEO = 'VIDEO',
+  IMAGE = 'IMAGE',
+  AUDIO = 'AUDIO',
+  COLLECTION = 'COLLECTION',
+  CONTENT = 'CONTENT',
 }
