@@ -1,0 +1,115 @@
+.add-content {
+  background-color: var(--black);
+  padding: 2rem;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  .options {
+    border: none;
+    background: none;
+    font-size: 1.6rem;
+    width: 100%;
+    li {
+      list-style: none;
+
+      span {
+        color: var(--gray);
+        text-decoration: none;
+        cursor: pointer;
+        transition: all .3s ease-in-out;
+        &:hover {
+          color: var(--white);
+        }
+      }
+    }
+  }
+
+  form {
+    width: clamp(30rem, 50vw, 40rem);
+    .form-group {
+      label {
+        font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+      }
+      .form-control {
+        font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+        resize: none;
+      }
+
+      input, textarea {
+        border: 1px solid var(--orange);
+        background-color: var(--black);
+        color: var(--white);
+        border-radius: 0.5rem;
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+
+      .btn {
+        font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+        float: right;
+        color: var(--orange);
+        &:hover {
+          color: var(--orange);
+          border-color: var(--orange);
+        }
+      }
+    }
+    .alert-danger {
+      color: var(--red);
+      p {
+        margin: 0;
+        user-select: none;
+      }
+    }
+  }
+}
+// .add-collection-component {
+//   background-color: var(--black);
+//   padding: 2rem;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   flex-direction: column;
+//   color: var(--white);
+//   form {
+//     width: 40rem;
+//     .form-group {
+//       label {
+//         font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+//       }
+//       .form-control {
+//         font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+//         resize: none;
+//       }
+
+//       input, textarea {
+//         border: 1px solid var(--orange);
+//         background-color: var(--black);
+//         color: var(--white);
+//         border-radius: 0.5rem;
+//         width: 100%;
+//         margin-bottom: 1rem;
+//       }
+
+//       .btn {
+//         font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+//         float: right;
+//         color: var(--white);
+//         &:hover {
+//           color: var(--orange);
+//           border-color: var(--orange);
+//         }
+//       }
+//     }
+//     .alert-danger {
+//       color: var(--red);
+//       p {
+//         margin: 0;
+//         user-select: none;
+//       }
+//     }
+//   }
+// }
