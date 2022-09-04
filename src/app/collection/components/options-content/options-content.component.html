@@ -1,0 +1,64 @@
+<div class="options-content">
+  <ng-container *ngIf="!active; else editContentForm">
+    <div class="options">
+      <ul class="list">
+        <li *ngIf="collection?.type != 'COLLECTION' && !collection?.finished">
+          <span (click)="markAsFinished()">Mark as Finished</span>
+        </li>
+        <li>
+          <span (click)="editCollection()">Edit</span>
+        </li>
+        <li *ngIf="collection?.type == 'COLLECTION'">
+          <span (click)="addContent()">Add Content</span>
+        </li>
+        <li>
+          <span (click)="deleteCollection()">Delete</span>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #editContentForm>
+  <h1>{{formTitle}}</h1>
+  <ng-container *ngIf="collection?.type != 'CONTENT'; else textForm">
+    <form (ngSubmit)="onSubmit()" [formGroup]="editForm" #form="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" class="form-control" required formControlName="name">
+        <div *ngIf="name.invalid && name.touched" class="alert-danger">
+          <p *ngIf="name.errors!['required']">Name is required</p>
+        </div>
+      </div>
+      <div class="form-group mt-2">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" formControlName="description" class="form-control"></textarea>
+      </div>
+      <div *ngIf="collection.type != 'COLLECTION'" class="form-group mt-2">
+        <label for="name">Url</label>
+        <input type="text" id="url" name="url" class="form-control" required formControlName="url">
+        <div *ngIf="url.invalid && url.touched" class="alert-danger">
+          <p *ngIf="url.errors!['required']">Url is required</p>
+        </div>
+      </div>
+      <div class="form-group mt-4 float-right">
+        <button type="submit" class="btn" [disabled]="form.invalid">Save</button>
+      </div>
+    </form>
+  </ng-container>
+</ng-template>
+
+<ng-template #textForm>
+  <form (ngSubmit)="onSubmit()" [formGroup]="editForm" #form="ngForm">
+    <div class="form-group">
+      <label for="name">Text</label>
+      <textarea id="name" name="name" formControlName="name" required class="form-control"></textarea>
+      <div *ngIf="name.invalid && name.touched" class="alert-danger">
+        <p *ngIf="name.errors!['required']">Text is required</p>
+      </div>
+    </div>
+    <div class="form-group mt-4 float-right">
+      <button type="submit" class="btn" [disabled]="form.invalid">Save</button>
+    </div>
+  </form>
+</ng-template>
