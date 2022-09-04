@@ -36,8 +36,6 @@ export class CollectionService {
   }
 
   addContentToCollection(id: number,content: Collection) {
-    console.log(content);
-    console.log(id)
     return this.http.post<Collection>(`${baseUrl}/add/${id}`, content);
   }
 
