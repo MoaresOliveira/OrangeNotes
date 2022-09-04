@@ -26,7 +26,6 @@ export class CollectionComponent implements OnInit {
 
   getCollections(){
     this.collectionService.getCollections().subscribe((data: any) => {
-      console.log(data)
       this.collections = data;
       this.selectedCollection = this.collections.find(collection => collection.id == this.idCollection)!;
       this.collections.forEach((collection)=> {
@@ -41,7 +40,6 @@ export class CollectionComponent implements OnInit {
   selectCollection(){
     this.route.params.subscribe(params =>{
       let param = this.route.snapshot.paramMap.get('id');
-      console.log(param);
       if(param?.startsWith('option')){
         this.showModal = true;
         this.addingContent = false
@@ -52,6 +50,7 @@ export class CollectionComponent implements OnInit {
         this.idCollection =  param == 'add-collection'? 0 :  parseInt(param.split('-')[1]);
       }else {
         this.idCollection = parseInt(param!);
+        this.showModal = false;
         sessionStorage.setItem('previousCollection', this.idCollection.toString());
         this.getCollections();
       }
