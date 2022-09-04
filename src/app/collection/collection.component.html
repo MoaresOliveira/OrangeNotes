@@ -1,5 +1,5 @@
 <div [class]="class">
-  <app-side-list></app-side-list>
+  <app-side-list [collections]="collections"></app-side-list>
   <app-board [collection]="selectedCollection"></app-board>
 
   <button id="list-button" (click)="toggleList()">
