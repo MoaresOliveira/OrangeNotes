@@ -38,10 +38,12 @@ div {
 }
 
 @media screen and (max-width: 768px) {
-  .addText {
-    filter: brightness(150%);
-    span {
-      display: block;
+  div {
+    .addText {
+      filter: brightness(150%);
+      span {
+        display: block;
+      }
     }
   }
 }
