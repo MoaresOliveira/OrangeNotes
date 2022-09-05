@@ -3,7 +3,8 @@
 
 ## 🚀 Deploy
 
-[Orange Notes](https://orange-notes-three.vercel.app/home)
+- [Orange Notes](https://orange-notes-three.vercel.app/home)
+- [OrangeNotes API](https://collection-orange-notes.herokuapp.com/swagger)
 
 ## Home 🏠 
 ### Here you can see all your main collections.
