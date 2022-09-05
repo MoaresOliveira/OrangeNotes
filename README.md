@@ -6,6 +6,10 @@
 - [Orange Notes](https://orange-notes-three.vercel.app/home)
 - [OrangeNotes API](https://collection-orange-notes.herokuapp.com/swagger)
 
+## 🗃 Repositories
+- [Orange Notes](https://github.com/MoaresOliveira/OrangeNotes)
+- [OrangeNotes API](https://github.com/MoaresOliveira/OrangeNotes-API)
+
 ## Home 🏠 
 ### Here you can see all your main collections.
 <p align="center">
