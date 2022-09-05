@@ -54,6 +54,7 @@ export class CollectionComponent implements OnInit {
         sessionStorage.setItem('previousCollection', this.idCollection.toString());
         this.getCollections();
       }
+      this.toggleList();
     });
   }
 
